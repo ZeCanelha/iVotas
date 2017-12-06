@@ -79,6 +79,10 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
 		<result name="success">show.jsp</result>
 	</action> 
 	
+	<action name="detailuser" class="action.DetailUserAction" method="execute">
+		<result name="success">viewuser.jsp</result>
+	</action>
+	
 	<action name="faculdade">
 		<result>faculdade.jsp</result>
 	</action>
@@ -115,6 +119,9 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
 	
 	<action name="consultar">
 		<result>consultar.jsp</result>
+	</action>
+	<action name="consultarvoto">
+		<result>votouser.jsp</result>
 	</action>
 	
   </package>

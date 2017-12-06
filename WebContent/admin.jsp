@@ -54,6 +54,10 @@
 				<a href ="consultar">Consultar detalhes de uma eleição</a>
 			</li>
 			
+			<li>
+				<a href="consultarvoto">Consultar detalhes de voto de um utilizador</a>
+			</li>
+			
 		</ul>
 	</div>
 	
