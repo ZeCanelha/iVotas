@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Hey!</title>
+<title>iVotas</title>
 </head>
 <body>
 
@@ -19,6 +19,18 @@
 		</c:otherwise>
 	</c:choose>
 	
+	<!-- -->
+	
+	<ul>
+		<c:forEach items="${heyBean.allElections}" var="value">
+			<li>
+				
+				<a href="votar.jsp?electionid=${value.value}">
+					<c:out value="${value.key}" />
+				</a>
+			</li>
+		</c:forEach>
+	</ul>
 	
 
 	<p><a href="<s:url action="index" />">Start</a></p>

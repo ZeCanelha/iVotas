@@ -6,6 +6,10 @@ package model;
 
 import java.net.MalformedURLException;
 import java.rmi.*;
+import java.util.HashMap;
+
+import com.sun.javafx.collections.MappingChange.Map;
+
 import Interface.RMIInterface;
 
 public class LoginBean {
@@ -30,6 +34,16 @@ public class LoginBean {
 	public boolean getLoginValidation() throws RemoteException
 	{
 		return server.login_user(this.username, this.password);
+	}
+	
+	public HashMap<String,String> getAllElections() throws RemoteException
+	{
+		HashMap<String,String> new_map = new HashMap<>();
+		new_map =  server.getAllElections();
+		
+		new_map.remove("size");
+		
+		return new_map;
 	}
 	
 	public void setUsername(String username) {
