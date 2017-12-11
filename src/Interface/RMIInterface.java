@@ -12,7 +12,7 @@ public interface RMIInterface extends Remote {
     //public ArrayList<Eleicao> getCurrentElections(String id_mesa) throws RemoteException;
     public boolean vote (HashMap<String,String> map) throws RemoteException;
     public String get_elector_type(String userid) throws RemoteException;
-    //public ArrayList<Lista> getElectionLists(String electionid) throws RemoteException;
+    public HashMap<String,String> getListas(String electionid) throws RemoteException;
     public String getFreeTable() throws RemoteException;
     public void update_estado_mesa(String id_mesa) throws RemoteException;
     public boolean alreadyVote ( String userid) throws RemoteException;

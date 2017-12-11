@@ -9,24 +9,9 @@
 <title>iVotas</title>
 </head>
 <body>
+
+
 	
-	
-	<s:form action="votar" method="post">
-		<c:forEach items="${heyBean.electionLists}" var="value">
-			<s:checkbox name="value">
-				<c:out value="${value.value}" />
-			</s:checkbox>	
-		</c:forEach>
-		<s:checkbox name="white">Branco</s:checkbox>
-		<s:submit />
-	</s:form>
-	
-	
-	
-	
-	
-	
-	
-	
+
 </body>
 </html>

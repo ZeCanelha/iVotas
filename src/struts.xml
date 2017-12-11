@@ -50,7 +50,7 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
 	<action name ="createuser" class="action.CreateUserAction" method="execute">
 		<result name="success">admin.jsp</result>
 	</action>
-	
+
 	<action name="createelection" class="action.CreateElectionAction" method="execute">
 		<result name="success">admin.jsp</result>
 	</action>
@@ -82,6 +82,17 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
 	<action name="detailuser" class="action.DetailUserAction" method="execute">
 		<result name="success">viewuser.jsp</result>
 	</action>
+	
+	
+	<action name="facelogin" class="action.FacebookLoginAction" method="execute">
+		<result name="success">MenuCliente.jsp</result>
+	</action>
+	
+	<action name="escolheeleicao" class="action.ChooseElectionAction" method="execute">
+		<result name="success">detailElection.jsp</result>
+	</action>
+	
+	
 	
 	<action name="faculdade">
 		<result>faculdade.jsp</result>
@@ -123,6 +134,7 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
 	<action name="consultarvoto">
 		<result>votouser.jsp</result>
 	</action>
+	
 	
 	
 	

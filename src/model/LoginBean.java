@@ -8,7 +8,7 @@ import java.net.MalformedURLException;
 import java.rmi.*;
 import java.util.HashMap;
 
-import com.sun.javafx.collections.MappingChange.Map;
+
 
 import Interface.RMIInterface;
 
@@ -17,6 +17,7 @@ public class LoginBean {
 	private String username; // username and password supplied by the user
 	private String password;
 	private static final String rmiAddress = "rmi://127.0.0.1:6005/rmiserver";
+	private String electionid;
 	
 
 
@@ -46,11 +47,29 @@ public class LoginBean {
 		return new_map;
 	}
 	
+	public HashMap<String,String> getElectionLists() throws RemoteException
+	{
+		return server.getListas(electionid);
+	}
+	
+	public HashMap<String,String> getElectionDetails() throws RemoteException
+	{
+		return server.detail_election(electionid);
+	}
+	
 	public void setUsername(String username) {
 		this.username = username;
 	}
 	
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getElectionid() {
+		return electionid;
+	}
+
+	public void setElectionid(String electionid) {
+		this.electionid = electionid;
 	}
 }

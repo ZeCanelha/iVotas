@@ -21,16 +21,22 @@
 	
 	<!-- -->
 	
-	<ul>
-		<c:forEach items="${heyBean.allElections}" var="value">
-			<li>
-				
-				<a href="votar.jsp?electionid=${value.value}">
-					<c:out value="${value.key}" />
-				</a>
-			</li>
-		</c:forEach>
-	</ul>
+	<c:forEach items="${heyBean.allElections}" var="value">
+		
+		
+		<a href="<s:url action="escolheeleicao">
+			<s:param name="electionid">${value.value}
+			</s:param>
+		</s:url>"><c:out value="${value.key}" /><br></a>
+			
+	</c:forEach>
+	
+	
+	
+	
+	
+		
+	
 	
 
 	<p><a href="<s:url action="index" />">Start</a></p>

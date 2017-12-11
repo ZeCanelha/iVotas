@@ -8,6 +8,16 @@
 <title>iVotas</title>
 </head>
 <style>
+	#formStyle {
+		position: relative;
+		z-index: 1;
+		background: #ffffff;
+		max-width: 360px;
+		margin: 0 auto auto;
+		padding: 45px;
+		text-align: center;
+		box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+	}
 	form {
 		position: relative;
 		z-index: 1;
@@ -31,12 +41,25 @@
 
 </style>
 <body>
-	<s:form action="login" method="post">
+	<s:form id="formStyle" action="login" method="post">
 		<s:text name="Username:" />
 		<s:textfield name="username" /><br>
 		<s:text name="Password:" />
-		<s:textfield name="password"/><br>
+		<s:password name="password" label="Password"/><br>
 		<s:submit />
 	</s:form>
+	
+	<s:form action="facelogin" method="post">
+  		<input type="image" src="http://www.pvhc.net/img48/oalmmtxqytqyhhjvmamr.png" alt="Submit">
+	</s:form>
+	
+	<!-- 
+	<script type="text/javascript">
+		window.location.replace(${session.redirecturl});
+	</script> 
+	-->
+	
+	
+	
 </body>
 </html>
