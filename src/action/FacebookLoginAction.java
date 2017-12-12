@@ -49,6 +49,7 @@ public class FacebookLoginAction extends ActionSupport implements SessionAware {
 	    
 	    session.put("redirecturl", authorizationUrl);
 	    
+	    
         return SUCCESS;
 		
         

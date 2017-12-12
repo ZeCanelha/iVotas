@@ -26,11 +26,18 @@ public class ChooseElectionAction extends ActionSupport implements SessionAware 
 		/* Verificar se o utilizador pode votar */
 		
 		try {
+			System.out.println(this.getLoginBean().userVoteConselho());
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		try {
 			tipoEleicao = this.getLoginBean().getTipoEleicao();
 			
 			if (tipoEleicao.equalsIgnoreCase("NUCLEO"))
 			{
-				if (this.getLoginBean().userVote())
+				if (!this.getLoginBean().userVote())
 				{
 					if(!this.getLoginBean().getUsertype().equalsIgnoreCase("estudante"))
 					{
@@ -47,7 +54,7 @@ public class ChooseElectionAction extends ActionSupport implements SessionAware 
 			}
 			else if (tipoEleicao.equalsIgnoreCase("DEPARTAMENTO") || tipoEleicao.equalsIgnoreCase("FACULDADE") )
 			{
-				if (this.getLoginBean().userVote())
+				if (!this.getLoginBean().userVote())
 				{
 					if(!this.getLoginBean().getUsertype().equalsIgnoreCase("estudante"))
 					{
@@ -65,8 +72,8 @@ public class ChooseElectionAction extends ActionSupport implements SessionAware 
 			else if (tipoEleicao.equalsIgnoreCase("CONSELHO GERAL"))
 			{
 				if (this.getLoginBean().userVoteConselho())
-					return SUCCESS;
-				return "stop";
+					return "stop";
+				return SUCCESS;
 			}
 			
 			

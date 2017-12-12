@@ -55,11 +55,9 @@
   		<input type="image" src="http://www.pvhc.net/img48/oalmmtxqytqyhhjvmamr.png" alt="Submit">
 	</s:form>
 	
-	<!-- 
-	<script type="text/javascript">
-		window.location.replace(${session.redirecturl});
-	</script> 
-	-->
+	
+	
+	
 	
 	
 	
