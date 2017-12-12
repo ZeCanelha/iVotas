@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public interface RMIInterface extends Remote {
 	public boolean authenticate_user( String user_id ) throws RemoteException;
-    public boolean login_user ( String username, String password) throws  RemoteException;
+    public boolean login_user ( String username, String password, String userid) throws  RemoteException;
     public HashMap<String,String> getAllElections() throws RemoteException;
     //public ArrayList<Eleicao> getCurrentElections(String id_mesa) throws RemoteException;
     public boolean vote (HashMap<String,String> map) throws RemoteException;
@@ -17,6 +17,7 @@ public interface RMIInterface extends Remote {
     public void update_estado_mesa(String id_mesa) throws RemoteException;
     public boolean alreadyVote ( String userid) throws RemoteException;
     public boolean alreadyVoteConselho ( String userid ) throws RemoteException;
+    public String getElectionType(String electionid) throws RemoteException;
 
 
 

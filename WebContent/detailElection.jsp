@@ -11,7 +11,16 @@
 <body>
 
 
+	<c:forEach items="${heyBean.electionDetails}" var="value">
+		<c:out value="${value.key}"/>
+		<c:out value="${value.value}"/>
+		<br>
+	</c:forEach>
 	
-
+	
+	<p><a href="<s:url action="pagvoto" />">Votar</a></p>
+	<p><a href="<s:url action="backcliente" />">Página Inicial</a></p>
+	
+	
 </body>
 </html>

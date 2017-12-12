@@ -15,12 +15,13 @@ import java.util.Map;
 public class LoginAction extends ActionSupport implements SessionAware {
 	private static final long serialVersionUID = 4L;
 	private Map<String, Object> session;
-	private String username = null, password = null;
+	private String username = null, password = null, userid = null;
+	private String tipo_eleitor;
 
 	@Override
 	public String execute() {
 		// any username is accepted without confirmation (should check using RMI)
-		if(this.username != null && !username.equals("")) {
+		if(this.username != null && !username.equals("") && !userid.equals("")) {
 			
 			if (this.username.equals("admin") && this.password.equals("admin"))
 			{
@@ -32,11 +33,20 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			{
 				this.getHeyBean().setUsername(this.username);
 				this.getHeyBean().setPassword(this.password);
-				
+				this.getHeyBean().setUserid(userid);
+				try {
+					tipo_eleitor = this.getHeyBean().getTipoUtilizador();
+					if (tipo_eleitor == null)
+						return ERROR;
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				this.getHeyBean().setUsertype(tipo_eleitor);
 				try {
 					if (this.getHeyBean().getLoginValidation())
 					{
-						/*TODO: Interceptors para manter sessão */
+						
 						session.put("username", username);
 						session.put("loggedin", true); // this marks the user as logged in
 						return SUCCESS;
@@ -54,6 +64,10 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			return LOGIN;
 	}
 	
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+
 	public void setUsername(String username) {
 		this.username = username; // will you sanitize this input? maybe use a prepared statement?
 	}

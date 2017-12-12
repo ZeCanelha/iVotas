@@ -1,7 +1,8 @@
 package action;
 
+
+
 import java.rmi.RemoteException;
-import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -13,24 +14,61 @@ import model.LoginBean;
 public class ChooseElectionAction extends ActionSupport implements SessionAware {
 	private static final long serialVersionUID = 4L;
 	private Map<String, Object> session;
-	private String electionid;
+	private String electionid,tipoEleicao;
 
 	
 
 	@Override
 	public String execute() 
-	{
-		HashMap<String,String> map = new HashMap<>();
-		
+	{	
 		this.getLoginBean().setElectionid(electionid);
 		
+		/* Verificar se o utilizador pode votar */
+		
 		try {
-			map = this.getLoginBean().getElectionDetails();
+			tipoEleicao = this.getLoginBean().getTipoEleicao();
 			
-			for(String i: map.values())
+			if (tipoEleicao.equalsIgnoreCase("NUCLEO"))
 			{
-				System.out.println(i);
+				if (this.getLoginBean().userVote())
+				{
+					if(!this.getLoginBean().getUsertype().equalsIgnoreCase("estudante"))
+					{
+						return "stop";
+					}
+					else
+					{
+						return SUCCESS;
+					}
+				}
+				else
+					return "stop";
+				
 			}
+			else if (tipoEleicao.equalsIgnoreCase("DEPARTAMENTO") || tipoEleicao.equalsIgnoreCase("FACULDADE") )
+			{
+				if (this.getLoginBean().userVote())
+				{
+					if(!this.getLoginBean().getUsertype().equalsIgnoreCase("estudante"))
+					{
+						return SUCCESS;
+					}
+					else
+					{
+						return "stop";
+					}
+				}
+				else
+					return "stop";
+				
+			}
+			else if (tipoEleicao.equalsIgnoreCase("CONSELHO GERAL"))
+			{
+				if (this.getLoginBean().userVoteConselho())
+					return SUCCESS;
+				return "stop";
+			}
+			
 			
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
@@ -38,11 +76,8 @@ public class ChooseElectionAction extends ActionSupport implements SessionAware 
 		}
 		
 		return SUCCESS;
+		
 	}
-	
-	
-	
-	
 	
 	public LoginBean getLoginBean() {
 		if(!session.containsKey("heyBean"))

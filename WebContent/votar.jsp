@@ -11,21 +11,17 @@
 <body>
 	
 	
-	<s:form action="votar" method="post">
+	<form action="votar" method="post">
 		<c:forEach items="${heyBean.electionLists}" var="value">
-			<s:checkbox name="value">
-				<c:out value="${value.value}" />
-			</s:checkbox>	
+			<c:out value="${value.value}"/>
+			<br>
 		</c:forEach>
-		<s:checkbox name="white">Branco</s:checkbox>
+			<p>Branco</p>
+			<p>Nulo</p>
+		<s:text name="Opção pretendida: " />
+		<s:textfield name="votevalue" /><br>
 		<s:submit />
-	</s:form>
-	
-	
-	
-	
-	
-	
+	</form>
 	
 	
 </body>
