@@ -8,13 +8,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>iVotas</title>
 </head>
+<style>
+	p{
+		font: 15px 'trebuchet MS', 'lucida sans';
+		margin: 4px;
+		padding: 2px;
+	}
+</style>
 <body>
 
-
+	<h1>Detalhes da eleição</h1>
 	<c:forEach items="${heyBean.electionDetails}" var="value">
-		<c:out value="${value.key}"/>
-		<c:out value="${value.value}"/>
-		<br>
+		<p>
+			<c:out value="${value.key}"/>
+			<c:out value="${value.value}"/>
+		<p>
 	</c:forEach>
 	
 	
