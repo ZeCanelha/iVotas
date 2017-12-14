@@ -28,7 +28,15 @@ public class DetailUserBean {
 	
 	public HashMap<String,String> getUserVote() throws RemoteException
 	{
-		return server.get_user_vote(iduser);
+		HashMap<String,String> map = new HashMap<>();
+		map = server.get_user_vote(iduser);
+		
+		if (map.get("id_mesa").equals("1"))
+		{
+			map.replace("id_mesa", "Browser");
+		}
+		
+		return map;
 	}
 
 

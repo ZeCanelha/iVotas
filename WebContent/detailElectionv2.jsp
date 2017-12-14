@@ -9,21 +9,49 @@
 <title>iVotas</title>
 </head>
 <style>
-	p{
-		font: 15px 'trebuchet MS', 'lucida sans';
-		margin: 4px;
-		padding: 2px;
+	#tcss {
+    		font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    		border-collapse: collapse;
+    		width: 100%;
 	}
+
+	#tcss td, #customers th {
+	    border: 1px solid #ddd;
+	    padding: 8px;
+	}
+	
+	#tcss tr:nth-child(even){background-color: #f2f2f2;}
+	
+	#tcss tr:hover {background-color: #ddd;}
+	
+	#tcss th {
+	    padding-top: 12px;
+	    padding-bottom: 12px;
+	    text-align: left;
+	    background-color: grey;
+	    color: white;
+}
 </style>
 <body>
 
 	<h1>Detalhes da eleição</h1>
-	<c:forEach items="${heyBean.electionDetails}" var="value">
-		<p>
-			<c:out value="${value.key}"/>
-			<c:out value="${value.value}"/>
-		<p>
-	</c:forEach>
+		<table id="tcss">
+		<tr>
+			<th>Número de votos válidos</th>
+			<th>Título da eleiçao</th>
+			<th>Descrição da eleição</th>
+			<th>Número de votos em branco</th>
+		</tr>
+		
+		<tr>
+			<c:forEach items="${heyBean.electionDetails}" var="value">
+			<td>
+				<c:out value="${value.value}"/>
+			</td>
+			</c:forEach>
+		</tr>
+		
+	</table>
 	
 	
 	<p><a href="<s:url action="backcliente" />">Página Inicial</a></p>

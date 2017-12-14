@@ -8,13 +8,54 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>iVotas!</title>
 </head>
+
+<style>
+#tcss {
+    		font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    		border-collapse: collapse;
+    		width: 100%;
+	}
+
+	#tcss td, #customers th {
+	    border: 1px solid #ddd;
+	    padding: 8px;
+	}
+	
+	#tcss tr:nth-child(even){background-color: #f2f2f2;}
+	
+	#tcss tr:hover {background-color: #ddd;}
+	
+	#tcss th {
+	    padding-top: 12px;
+	    padding-bottom: 12px;
+	    text-align: left;
+	    background-color: grey;
+	    color: white;
+}
+</style>
+
 <body>
+	
+	<h1>Detalhes de voto </h1>
+	<table id="tcss">
+		<tr>
+			<th>Instante do voto</th>
+			<th>Local de voto</th>
+		</tr>
+		<tr>
+			<c:forEach items="${detailUserBean.userVote}" var="value">
+				<td>
+					<c:out value="${value.value}" />
+				</td>
+			</c:forEach>
+		</tr>
+		
+		
+	</table>
 
-
-	<c:forEach items="${detailUserBean.userVote}" var="value">
-		<c:out value="${value}" /><br>
-	</c:forEach>
-
+	
+	
+	<p><a href="<s:url action="backpag" />">Página inicial</a></p>
 	
 
 </body>
