@@ -58,7 +58,7 @@
         var websocket = null;
 
         window.onload = function() { // URI = ws://10.16.0.165:8080/WebSocket/ws
-            connect('ws://' + window.location.host + '/WebSocket/ws');
+            connect('ws://' + window.location.host + '/iVotas/ws');
             document.getElementById("chat").focus();
         }
 
@@ -119,9 +119,12 @@
     </script>
 
 <body>
-
-
-	<center>
+	
+	
+	<c:choose>
+		<c:when test="${session.loggedin == true}">
+			
+			<center>
 		<h1>Detalhes da eleição</h1>
 	</center>
 	
@@ -148,6 +151,14 @@
     
 
 	<p><a href="<s:url action="backpag" />">Página inicial</a></p>
+	
+		</c:when>
+		<c:otherwise>
+			<p>Login necessário.</p>
+		</c:otherwise>
+	</c:choose>
+
+	
 	
 </body>
 </html>

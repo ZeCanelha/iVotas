@@ -35,8 +35,10 @@
 
 <body>
 	
-	
-	<form action="votar" method="post">
+	<c:choose>
+		<c:when test="${session.loggedin == true}">
+			
+			<form action="votar" method="post">
 		<c:forEach items="${heyBean.electionLists}" var="value">
 			<c:out value="${value.value}"/>
 			<br>
@@ -47,6 +49,15 @@
 		<s:textfield name="votevalue" /><br>
 		<s:submit />
 	</form>
+	
+		</c:when>
+		<c:otherwise>
+			<p>Login necessário.</p>
+		</c:otherwise>
+	</c:choose>
+	
+	
+	
 	
 	
 </body>

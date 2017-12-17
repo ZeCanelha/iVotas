@@ -74,33 +74,29 @@
 		<c:when test="${session.loggedin == true}">
 			<p>Bem-vindo, ${session.username}.</p>
 			<p>Por favor, escolha uma das seguintes eleições.</p>
+			<ol class="rectangle-list">
+				<c:forEach items="${heyBean.allElections}" var="value">	
+					<li>
+						<a href="<s:url action="escolheeleicao">
+							<s:param name="electionid">${value.value}
+							</s:param>
+						</s:url>"><c:out value="${value.key}" /><br></a>
+					</li>
+						
+				</c:forEach>
+			</ol>
+
+			<p><a href="<s:url action="logout" />">Sair</a></p>
 		</c:when>
 		<c:otherwise>
-			<p>Welcome, anonymous user. Say HEY to someone.</p>
+			<p>Login necessário.</p>
 		</c:otherwise>
 	</c:choose>
 	
 	<!-- -->
 	
 	
-	<ol class="rectangle-list">
-		<c:forEach items="${heyBean.allElections}" var="value">	
-			<li>
-				<a href="<s:url action="escolheeleicao">
-					<s:param name="electionid">${value.value}
-					</s:param>
-				</s:url>"><c:out value="${value.key}" /><br></a>
-			</li>
-				
-		</c:forEach>
-	</ol>
 	
-	
-	
-	
-	
-
-	<p><a href="<s:url action="index" />">Start</a></p>
 
 </body>
 </html>

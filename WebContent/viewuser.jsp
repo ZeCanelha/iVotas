@@ -35,8 +35,12 @@
 </style>
 
 <body>
-	
-	<h1>Detalhes de voto </h1>
+
+
+<c:choose>
+		<c:when test="${session.loggedin == true}">
+			
+			<h1>Detalhes de voto </h1>
 	<table id="tcss">
 		<tr>
 			<th>Instante do voto</th>
@@ -49,13 +53,17 @@
 				</td>
 			</c:forEach>
 		</tr>
-		
-		
 	</table>
-
-	
 	
 	<p><a href="<s:url action="backpag" />">Página inicial</a></p>
+	
+		</c:when>
+		<c:otherwise>
+			<p>Login necessário.</p>
+		</c:otherwise>
+	</c:choose>
+	
+	
 	
 
 </body>

@@ -20,7 +20,7 @@ public class FacebookBean {
 	private String authorizationUrl;
 
 	public FacebookBean() {
-		
+		/*
 		try {
 			server = (RMIInterface) Naming.lookup(rmiAddress);
 		}
@@ -28,6 +28,7 @@ public class FacebookBean {
 
 			e.printStackTrace();
 		}
+		*/
 	}
 
 	public Token getAccessToken() {

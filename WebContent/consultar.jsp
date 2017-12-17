@@ -35,11 +35,22 @@
 
 
 <body>
-		<s:form action="detail" method="post">
-			<s:text name="ID da eleição" />
-			<s:textfield name="ideleicao" /><br>
-			<s:submit />
-		</s:form>
+
+		<c:choose>
+		<c:when test="${session.loggedin == true}">
+			
+			<s:form action="detail" method="post">
+				<s:text name="ID da eleição" />
+				<s:textfield name="ideleicao" /><br>
+				<s:submit />
+			</s:form>
+	
+		</c:when>
+		<c:otherwise>
+			<p>Login necessário.</p>
+		</c:otherwise>
+	</c:choose>
+		
 	
 
 </body>

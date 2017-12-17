@@ -34,7 +34,11 @@
 </style>
 
 <body>
-		<s:form action="createuser" method="post">
+
+		<c:choose>
+		<c:when test="${session.loggedin == true}">
+			
+			<s:form action="createuser" method="post">
 			<s:text name="Nome" />
 			<s:textfield name="nome" /><br>
 			<s:text name="Password"/>
@@ -53,6 +57,13 @@
 			<s:textfield name="tipo"/><br>
 			<s:submit />
 		</s:form>
+	
+		</c:when>
+		<c:otherwise>
+			<p>Login necessário.</p>
+		</c:otherwise>
+	</c:choose>
+		
 	
 
 </body>

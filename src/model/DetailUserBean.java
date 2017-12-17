@@ -31,7 +31,7 @@ public class DetailUserBean {
 		HashMap<String,String> map = new HashMap<>();
 		map = server.get_user_vote(iduser);
 		
-		if (map.get("id_mesa").equals("1"))
+		if (map.get("id_mesa").equals("-1"))
 		{
 			map.replace("id_mesa", "Browser");
 		}

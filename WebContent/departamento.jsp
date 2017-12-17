@@ -34,13 +34,24 @@
 
 
 <body>
-		<s:form action="createdep" method="post">
+
+	<c:choose>
+		<c:when test="${session.loggedin == true}">
+			
+			<s:form action="createdep" method="post">
 			<s:text name="Nome do departamento:" />
 			<s:textfield name="depname" /><br>
 			<s:text name="ID da faculdade"/>
 			<s:textfield name="idfac"/><br>
 			<s:submit />
 		</s:form>
+	
+		</c:when>
+		<c:otherwise>
+			<p>Login necessário.</p>
+		</c:otherwise>
+	</c:choose>
+		
 	
 
 </body>

@@ -73,16 +73,7 @@
 	<c:choose>
 		<c:when test="${session.loggedin == true}">
 			<h1>Bem-vindo, ${session.username}.</h1>
-		</c:when>
-		<c:otherwise>
-			<p>Welcome, anonymous user. Say HEY to someone.</p>
-		</c:otherwise>
-	</c:choose>
-	
-	
-
-	
-	<ol class="rectangle-list">
+			<ol class="rectangle-list">
 		<li>
 			<a href ="faculdade">Criar faculdade</a>
 		</li>
@@ -121,7 +112,17 @@
 	</ol>
 	
 	
-	<p><a href="<s:url action="index" />">Start</a></p>
+	<p><a href="<s:url action="logout" />">Sair</a></p>
+		</c:when>
+		<c:otherwise>
+			<p>Login necessário.</p>
+		</c:otherwise>
+	</c:choose>
+	
+	
+
+	
+	
 
 </body>
 </html>

@@ -22,7 +22,9 @@ public class DetailElectionAction extends ActionSupport implements SessionAware 
 		
 		HashMap<String,String> map = null;
 		this.getDetailBean().setIdeleicao(ideleicao);
+		
 		try {
+			this.getDetailBean().startNotifications();
 			map = this.getDetailBean().getDetailElections();
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block

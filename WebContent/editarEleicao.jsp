@@ -35,7 +35,11 @@
 
 
 <body>
-		<s:form action="editareleicao" method="post">
+
+		<c:choose>
+		<c:when test="${session.loggedin == true}">
+			
+			<s:form action="editareleicao" method="post">
 			<s:text name="ID da eleicao" />
 			<s:textfield name="ideleicao" /><br>
 			<s:text name="Título" />
@@ -47,7 +51,14 @@
 			<s:text name="Fim"/>
 			<s:textfield name="end"/><br>
 			<s:submit />
-		</s:form>
+			</s:form>
+	
+		</c:when>
+		<c:otherwise>
+			<p>Login necessário.</p>
+		</c:otherwise>
+	</c:choose>
+		
 	
 
 </body>

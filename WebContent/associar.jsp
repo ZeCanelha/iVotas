@@ -34,7 +34,9 @@
 </style>
 
 <body>
-		<s:form action="associatemesa" method="post">
+		<c:choose>
+		<c:when test="${session.loggedin == true}">
+			<s:form action="associatemesa" method="post">
 			<s:text name="ID da eleção" />
 			<s:textfield name="ideleicao" /><br>
 			<s:text name="Departamento" />
@@ -42,6 +44,14 @@
 			<s:submit />
 		</s:form>
 	
+		</c:when>
+		<c:otherwise>
+			<p>Login necessário.</p>
+		</c:otherwise>
+	</c:choose>
+	
+	
+		
 
 </body>
 </html>

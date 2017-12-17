@@ -35,7 +35,11 @@
 
 <body>
 
-	<center>
+
+	<c:choose>
+		<c:when test="${session.loggedin == true}">
+			
+			<center>
 		<h1>Detalhes da eleição</h1>
 	</center>
 	
@@ -62,6 +66,14 @@
 	
 	<p><a href="<s:url action="pagvoto" />">Votar</a></p>
 	<p><a href="<s:url action="backcliente" />">Página Inicial</a></p>
+	
+		</c:when>
+		<c:otherwise>
+			<p>Login necessário.</p>
+		</c:otherwise>
+	</c:choose>
+
+	
 	
 	
 </body>

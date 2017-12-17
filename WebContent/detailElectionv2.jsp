@@ -34,7 +34,11 @@
 </style>
 <body>
 
-	<h1>Detalhes da eleição</h1>
+
+	<c:choose>
+		<c:when test="${session.loggedin == true}">
+			
+			<h1>Detalhes da eleição</h1>
 		<table id="tcss">
 		<tr>
 			<th>Número de votos válidos</th>
@@ -55,6 +59,14 @@
 	
 	
 	<p><a href="<s:url action="backcliente" />">Página Inicial</a></p>
+	
+		</c:when>
+		<c:otherwise>
+			<p>Login necessário.</p>
+		</c:otherwise>
+	</c:choose>
+
+	
 	
 	
 </body>

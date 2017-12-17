@@ -17,6 +17,7 @@ public interface RMIInterface extends Remote {
     public boolean alreadyVote ( String userid) throws RemoteException;
     public boolean alreadyVoteConselho ( String userid ) throws RemoteException;
     public String getElectionType(String electionid) throws RemoteException;
+    public int getAllUserVotes() throws RemoteException;
 
 
 
@@ -36,9 +37,17 @@ public interface RMIInterface extends Remote {
     public boolean isnt_started ( String election_id) throws RemoteException;
     public boolean same_department( String user_id, int dep ) throws RemoteException;
 
-    // Callbacks
+    // Callbacks | Subscribes
 
     //public void subscribe_admin_console(AdminConsoleInterface cliente_rmi) throws RemoteException;
+    
+    
+    public void startWebSocketNotifications() throws RemoteException;
+    
+    void subscribeWS(WSHelperInterface c) throws RemoteException;
+    void removeSubscription(WSHelperInterface c) throws RemoteException;
+    
+    
 
 }
 

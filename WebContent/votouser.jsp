@@ -34,11 +34,22 @@
 </style>
 
 <body>
-		<s:form action="detailuser" method="post">
+
+		<c:choose>
+		<c:when test="${session.loggedin == true}">
+			<s:form action="detailuser" method="post">
 			<s:text name="ID do utilizador" />
 			<s:textfield name="iduser" /><br>
 			<s:submit />
 		</s:form>
+		
+	
+		</c:when>
+		<c:otherwise>
+			<p>Login necessário.</p>
+		</c:otherwise>
+	</c:choose>
+		
 	
 
 </body>

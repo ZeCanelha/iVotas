@@ -34,11 +34,22 @@
 </style>
 
 <body>
-		<s:form action="createfac" method="post">
+
+		<c:choose>
+		<c:when test="${session.loggedin == true}">
+			
+			<s:form action="createfac" method="post">
 			<s:text name="Nome da faculdade:" />
 			<s:textfield name="facname" /><br>
 			<s:submit />
 		</s:form>
+	
+		</c:when>
+		<c:otherwise>
+			<p>Login necessário.</p>
+		</c:otherwise>
+	</c:choose>
+		
 	
 
 </body>

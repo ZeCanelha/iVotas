@@ -34,8 +34,10 @@
 </style>
 
 <body>
-		
-		<s:form action="gerirmesa" method="post">
+		<c:choose>
+		<c:when test="${session.loggedin == true}">
+			
+			<s:form action="gerirmesa" method="post">
 			<s:text name="Operação" />
 			<s:textfield name="optipo" /><br>
 			<s:text name="ID do utilizador" />
@@ -44,6 +46,13 @@
 			<s:textfield name="idmesa" /><br>
 			<s:submit />
 		</s:form>
+	
+		</c:when>
+		<c:otherwise>
+			<p>Login necessário.</p>
+		</c:otherwise>
+	</c:choose>
+		
 	
 
 </body>
