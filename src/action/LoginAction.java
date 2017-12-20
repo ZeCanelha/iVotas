@@ -48,6 +48,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 					{
 						session.put("userid", userid);
 						session.put("username", username);
+						this.session.put("fbloggedin", "false");
 						session.put("loggedin", true); // this marks the user as logged in
 						return SUCCESS;
 					}

@@ -86,20 +86,20 @@ public class FacebookCallbackAction extends ActionSupport implements SessionAwar
         		
         		/* Verificar se é um metohod o de associação de conta ou método de login */
         		
-        		String register = this.session.get("register").toString();
-        		System.out.println(register);
         		
         		if (this.session.get("loggedin") == null)
         		{
-        			System.out.println("ASD222");
+        			
             		try {
     					if (this.getFaceBean().getLoginConfirmation(this.getFacebook_id()))
     					{
     						userid = this.getFaceBean().getUserid();
     						
     						this.session.put("loggedin", "true");
+    						this.session.put("fbloggedin", "true");
     						this.session.put("username", this.username);
     						this.session.put("accessToken", accessToken);
+    						this.session.put("fbid", this.facebook_id);
     						this.session.put("userid", userid);
     						
     						this.getHeyBean().setUserid(userid);
@@ -125,7 +125,8 @@ public class FacebookCallbackAction extends ActionSupport implements SessionAwar
             		
             		return SUCCESS;
         		}
-        		else if (register.equals("true"))
+        		
+        		else if (this.session.containsKey("register"))
         		{
         			/* Associar conta */
         			
@@ -135,7 +136,8 @@ public class FacebookCallbackAction extends ActionSupport implements SessionAwar
         			try {
 						if (this.getFaceBean().associateFaceAccount(userid, this.facebook_id, this.accessToken.toString()))
 						{
-							return SUCCESS;
+							this.session.put("register", "false");
+							return LOGIN;
 						}
 						else
 							return ERROR;
@@ -143,13 +145,9 @@ public class FacebookCallbackAction extends ActionSupport implements SessionAwar
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-        			
         		}
 
         }
-        
-        System.out.println("ASD");
-	    
         return LOGIN;
 		
         
