@@ -18,6 +18,10 @@ public interface RMIInterface extends Remote {
     public boolean alreadyVoteConselho ( String userid ) throws RemoteException;
     public String getElectionType(String electionid) throws RemoteException;
     public int getAllUserVotes() throws RemoteException;
+    String getFacebookConfirmation(String facebook_id) throws RemoteException;
+    boolean associateFacebookAccount(String userid, String facebook_id,String accessToken) throws RemoteException;
+    HashMap<String,String> getFacebookLoginInformation(String userid) throws RemoteException; 
+    boolean removeFacebookInformation(String userid) throws RemoteException;
 
 
 

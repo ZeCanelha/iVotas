@@ -85,7 +85,15 @@
 						
 				</c:forEach>
 			</ol>
-
+			
+			<p><a href="<s:url action="associateface"/>">Associar conta ao facebook</a></p>
+			
+			<p>
+			<a href="
+			<s:url action="unassociateface"/>
+			<c:set var="register" value="${true}" scope="session" />">Desassociar conta do facebook</a>
+			</p>
+			
 			<p><a href="<s:url action="logout" />">Sair</a></p>
 		</c:when>
 		<c:otherwise>

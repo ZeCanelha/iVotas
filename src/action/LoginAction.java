@@ -46,7 +46,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				try {
 					if (this.getHeyBean().getLoginValidation())
 					{
-						
+						session.put("userid", userid);
 						session.put("username", username);
 						session.put("loggedin", true); // this marks the user as logged in
 						return SUCCESS;

@@ -112,6 +112,8 @@
 	</ol>
 	
 	
+	
+	
 	<p><a href="<s:url action="logout" />">Sair</a></p>
 		</c:when>
 		<c:otherwise>
