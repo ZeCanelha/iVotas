@@ -27,7 +27,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class FacebookCallbackAction extends ActionSupport implements SessionAware {
+public class FacebookRegistoCallbackAction extends ActionSupport implements SessionAware {
 	private static final long serialVersionUID = 4L;
 	private Map<String, Object> session;
 	
@@ -42,10 +42,6 @@ public class FacebookCallbackAction extends ActionSupport implements SessionAwar
 
 	private String username;
     private String facebook_id;
-    
-    private String userid;
-    private String user_type;
-    
 
 	@Override
 	public String execute() 
@@ -54,7 +50,7 @@ public class FacebookCallbackAction extends ActionSupport implements SessionAwar
                 .provider(FacebookApi2.class)
                 .apiKey(API_APP_KEY)
                 .apiSecret(API_APP_SECRET)
-                .callback("http://localhost:8080/iVotas/callback") // Do not change this.
+                .callback("http://localhost:8080/iVotas/callbackregisto") // Do not change this.
                 .scope("publish_actions")
                 .scope("user_posts")
                 .build();
@@ -86,43 +82,23 @@ public class FacebookCallbackAction extends ActionSupport implements SessionAwar
         		this.setUsername(response.getBody());
         		
         		/* Verificar se é um metohod o de associação de conta ou método de login */
-
         		
+        			
+    			String userid = session.get("userid").toString();
+    			
     			try {
-				if (this.getFaceBean().getLoginConfirmation(this.getFacebook_id()))
-				{
-					userid = this.getFaceBean().getUserid();
-					
-					this.session.put("loggedin", "true");
-					this.session.put("fbloggedin", "true");
-					this.session.put("username", this.username);
-					this.session.put("accessToken", accessToken);
-					this.session.put("fbid", this.facebook_id);
-					this.session.put("userid", userid);
-					
-					this.getHeyBean().setUserid(userid);
-					try {
-						user_type = this.getHeyBean().getTipoUtilizador();
-						if (user_type == null)
-							return ERROR;
-					} catch (RemoteException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
+					if (this.getFaceBean().associateFaceAccount(userid, this.facebook_id, this.accessToken.getToken()))
+					{	
 					}
-					this.getHeyBean().setUsertype(user_type);
-
-				}
-				else
-					return LOGIN;
+					else
+						return ERROR;
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-        		
         }
-        
-        return SUCCESS;
-       
+        		
+        return LOGIN;
 	}
 	
 	
@@ -159,7 +135,7 @@ public class FacebookCallbackAction extends ActionSupport implements SessionAwar
 			this.username = (String) json.get("name");
 			
 		} catch (ParseException e) {
-			
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

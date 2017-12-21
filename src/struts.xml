@@ -107,13 +107,20 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
 		<result name="success">index.jsp</result>
 	</action>
 	
-	<action name="associateface" class="action.FacebookLoginAction" method="execute">
+	<action name="associateface" class="action.FacebookRegisterAction" method="execute">
 		<result type="redirect">${authorizationUrl}</result>
+	</action>
+	<action name="callbackregisto" class="action.FacebookRegistoCallbackAction" method="execute">
+		<result name="success">MenuCliente.jsp</result>
+		<result name="login">index.jsp</result>
 	</action>
 	
 	<action name="unassociateface" class="action.FacebookRemoveAction" method="execute">
 		<result name="login">index.jsp</result>
-		
+	</action>
+	
+	<action name="partilharPOST" class="action.ShareElectionAction" method="execute">
+		<result name="success">detailElection.jsp</result>
 	</action>
 	
 	

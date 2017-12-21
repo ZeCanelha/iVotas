@@ -92,6 +92,12 @@ public class LoginBean {
 	}
 	
 	
+	public boolean setPostId(String postid) throws RemoteException
+	{
+		return server.setPostId(postid, electionid);
+	}
+	
+	
 	public void setUsername(String username) {
 		this.username = username;
 	}

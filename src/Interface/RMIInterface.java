@@ -22,6 +22,8 @@ public interface RMIInterface extends Remote {
     boolean associateFacebookAccount(String userid, String facebook_id,String accessToken) throws RemoteException;
     HashMap<String,String> getFacebookLoginInformation(String userid) throws RemoteException; 
     boolean removeFacebookInformation(String userid) throws RemoteException;
+    boolean setPostId(String id,String election_id) throws RemoteException;
+    boolean hasEnded(String electionid) throws RemoteException;
 
 
 

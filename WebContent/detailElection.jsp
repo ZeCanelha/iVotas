@@ -65,6 +65,7 @@
 	
 	
 	<p><a href="<s:url action="pagvoto" />">Votar</a></p>
+	<p><a href="<s:url action="partilharPOST" />">Partilhar página da eleição</a></p>
 	<p><a href="<s:url action="backcliente" />">Página Inicial</a></p>
 	
 		</c:when>
