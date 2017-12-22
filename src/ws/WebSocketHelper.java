@@ -66,16 +66,17 @@ public class WebSocketHelper extends UnicastRemoteObject implements WSHelperInte
 	@Override
 	public void getOnlineUsers() throws RemoteException {
 		
-		//TODO: Utilizadores online da mesa de voto meta 1
 		
-		ArrayList<String> online_users = new ArrayList<>();
+	}
+
+	@Override
+	public void getTableState() throws RemoteException 
+	{
 		
-		online_users.add((String) this.browserSession.getAttribute("username"));
+		String text = "Mesas de voto online: ";
+		this.websocket.sendMessage(text + rmi_server.getStates());
 		
-		for ( String i : online_users)
-		{
-			this.websocket.sendMessage(i);
-		}
+		
 	}
 	
 

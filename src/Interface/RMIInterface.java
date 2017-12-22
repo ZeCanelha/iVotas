@@ -2,6 +2,7 @@ package Interface;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public interface RMIInterface extends Remote {
@@ -24,6 +25,7 @@ public interface RMIInterface extends Remote {
     boolean removeFacebookInformation(String userid) throws RemoteException;
     boolean setPostId(String id,String election_id) throws RemoteException;
     boolean hasEnded(String electionid) throws RemoteException;
+    int getStates() throws RemoteException;
 
 
 
@@ -47,8 +49,11 @@ public interface RMIInterface extends Remote {
 
     //public void subscribe_admin_console(AdminConsoleInterface cliente_rmi) throws RemoteException;
     
+    //Facebook thread
+    void startFacebookThread(String accessToken, String postId, String electionId) throws RemoteException;
     
     public void startWebSocketNotifications() throws RemoteException;
+    public void startWebSocketTableNotifications() throws RemoteException;
     
     void subscribeWS(WSHelperInterface c) throws RemoteException;
     void removeSubscription(WSHelperInterface c) throws RemoteException;

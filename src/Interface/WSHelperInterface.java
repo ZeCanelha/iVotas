@@ -8,5 +8,6 @@ public interface WSHelperInterface extends Remote
 {
 	void getAllUsersVotes() throws RemoteException;
 	void getOnlineUsers() throws RemoteException;
+	void getTableState() throws RemoteException;
 
 }

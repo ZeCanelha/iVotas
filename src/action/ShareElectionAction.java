@@ -1,6 +1,6 @@
 package action;
 import com.github.scribejava.core.builder.ServiceBuilder;
-import model.FacebookBean;
+
 import model.LoginBean;
 
 import com.github.scribejava.core.model.OAuthRequest;
@@ -8,30 +8,22 @@ import com.github.scribejava.core.model.Response;
 import com.github.scribejava.core.model.Token;
 import com.github.scribejava.core.model.Verb;
 import com.github.scribejava.core.oauth.OAuthService;
-import com.opensymphony.xwork2.ActionContext;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 import uc.sd.apis.FacebookApi2;
 
-import org.apache.struts2.ServletActionContext;
+
 import org.apache.struts2.interceptor.SessionAware;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
+
 import java.rmi.RemoteException;
 import java.util.Map;
 
-import javax.net.ssl.HttpsURLConnection;
-import javax.servlet.http.HttpServletRequest;
+
 
 
 public class ShareElectionAction extends ActionSupport implements SessionAware {
@@ -59,7 +51,6 @@ public class ShareElectionAction extends ActionSupport implements SessionAware {
 	                .apiKey(API_APP_KEY)
 	                .apiSecret(API_APP_SECRET)
 	                .scope("publish_actions")
-	                .scope("user_posts")
 	                .build();
 			
 			Token accessToken = (Token) session.get("accessToken");
@@ -80,46 +71,16 @@ public class ShareElectionAction extends ActionSupport implements SessionAware {
 				this.setPostid(response.getBody());
 				try {
 					this.getLoginBean().setPostId(this.postid);
+					this.getLoginBean().startFacebookThread(accessToken.getToken(), this.postid, this.getLoginBean().getElectionid());
+					
 				} catch (RemoteException e) {
 					e.printStackTrace();
 				}
 				
 				/*TODO: Iniciar a thread ?? */
 				/* Passar o election id para dar bom link no post 
-				
-				String urlx = "https://graph.facebook.com/v2.11/"+this.postid+"&access_token=" + accessToken.getToken();
-				
-				System.out.println(urlx);
-				try {
-					URL toPost = new URL(urlx);
-			
-					String query = "message=something";
-					byte [] postData = query.getBytes( StandardCharsets.UTF_8 );
-					int    postDataLength = postData.length;
-					HttpURLConnection con = (HttpURLConnection) toPost.openConnection();
-					con.setRequestMethod( "POST" );
-					con.setRequestProperty( "Content-Type", "application/x-www-form-urlencoded"); 
-					con.setRequestProperty( "charset", "utf-8");
-					con.setRequestProperty( "Content-Length", Integer.toString( postDataLength ));
-					con.setUseCaches( false );
-					con.setDoOutput(true);
-					try( DataOutputStream wr = new DataOutputStream( con.getOutputStream())) {
-					   wr.write( postData );
-					}
-					
-					System.out.println(con.getResponseCode());
-		            
-		            
-				} catch (MalformedURLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-	            
-				
 				*/
+				
 				
 	        		return SUCCESS;
 	        }	

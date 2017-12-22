@@ -109,6 +109,10 @@
 			<a href="consultarvoto">Consultar detalhes de voto de um utilizador</a>
 		</li>
 		
+		<li>
+			<a href ="<s:url action="onlinetables"/>">Mesas online</a>
+		</li>
+		
 	</ol>
 	
 	

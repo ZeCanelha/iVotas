@@ -56,7 +56,6 @@ public class FacebookCallbackAction extends ActionSupport implements SessionAwar
                 .apiSecret(API_APP_SECRET)
                 .callback("http://localhost:8080/iVotas/callback") // Do not change this.
                 .scope("publish_actions")
-                .scope("user_posts")
                 .build();
 	    
 	    

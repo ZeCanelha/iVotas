@@ -96,7 +96,19 @@ public class LoginBean {
 	{
 		return server.setPostId(postid, electionid);
 	}
+	public void startNotifications() throws RemoteException
+	{
+		server.startWebSocketNotifications();
+	}
+	public void startTablesNotifications() throws RemoteException
+	{
+		server.startWebSocketTableNotifications();
+	}
 	
+	public void startFacebookThread(String accessToken, String postId, String electionId) throws RemoteException
+	{
+		server.startFacebookThread(accessToken, postId, electionId);
+	}
 	
 	public void setUsername(String username) {
 		this.username = username;

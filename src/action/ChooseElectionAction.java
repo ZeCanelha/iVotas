@@ -23,6 +23,13 @@ public class ChooseElectionAction extends ActionSupport implements SessionAware 
 	{	
 		this.getLoginBean().setElectionid(electionid);
 		
+		try {
+			this.getLoginBean().startNotifications();
+		} catch (RemoteException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		
 		/* Verificar se o utilizador pode votar */
 		
 		try {

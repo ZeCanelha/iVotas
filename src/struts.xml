@@ -123,7 +123,9 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
 		<result name="success">detailElection.jsp</result>
 	</action>
 	
-	
+	<action name="onlinetables" class="action.OnlineTablesAction" method="execute">
+		<result name="success">showonlinetables.jsp</result>
+	</action>
 	
 	<action name="pagvoto">
 		<result>votar.jsp</result>

@@ -31,10 +31,7 @@ public class DetailElectionBean {
 		return server.detail_election(ideleicao);
 	}
 	
-	public void startNotifications() throws RemoteException
-	{
-		server.startWebSocketNotifications();
-	}
+	
 
 	public String getIdeleicao() {
 		return ideleicao;

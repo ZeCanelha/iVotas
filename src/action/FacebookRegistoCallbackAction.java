@@ -52,7 +52,6 @@ public class FacebookRegistoCallbackAction extends ActionSupport implements Sess
                 .apiSecret(API_APP_SECRET)
                 .callback("http://localhost:8080/iVotas/callbackregisto") // Do not change this.
                 .scope("publish_actions")
-                .scope("user_posts")
                 .build();
 	    
 	    
