@@ -47,6 +47,8 @@ public class WebSocketAnnotation {
         
         this.httpSession = (HttpSession) config.getUserProperties().get(HttpSession.class.getName());
         
+
+        
         try {
 			this.ws_methods = new WebSocketHelper(this,httpSession);
 			

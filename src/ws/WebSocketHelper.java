@@ -9,6 +9,8 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -24,6 +26,7 @@ public class WebSocketHelper extends UnicastRemoteObject implements WSHelperInte
 	public RMIInterface rmi_server;
 	private WebSocketAnnotation websocket;
 	private HttpSession browserSession;
+	
 	
 	WebSocketHelper(WebSocketAnnotation web, HttpSession session) throws RemoteException 
 	{
@@ -56,6 +59,8 @@ public class WebSocketHelper extends UnicastRemoteObject implements WSHelperInte
 		String text = "Numero total de votos: ";
 		this.websocket.sendMessage(text + rmi_server.getAllUserVotes());
 		
+		
+		
 	}
 	
 	public void removeSubscription() throws RemoteException
@@ -65,7 +70,7 @@ public class WebSocketHelper extends UnicastRemoteObject implements WSHelperInte
 
 	@Override
 	public void getOnlineUsers() throws RemoteException {
-		
+		this.websocket.sendMessage(this.browserSession.getAttribute("username").toString());
 		
 	}
 
